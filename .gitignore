@@ -5,6 +5,7 @@
 *.log
 *.out
 *.synctex.gz
+*.toc
 
 # Google disk files
 Icon*
