@@ -3,29 +3,29 @@
 
 
 \input{common/packages}                 % Пакеты общие для диссертации и автореферата
-\input{Dissertation/dispackages}        % Пакеты для диссертации
+\input{Dissertation/packages/dispackages}        % Пакеты для диссертации
 \input{common/data}                     % Основные сведения
 \input{common/newnames}                 % Новые переменные, которые могут использоваться во всём проекте
 
-\input{Dissertation/disstyles}           % Стили для диссертации
+\input{Dissertation/packages/disstyles}          % Стили для диссертации
 
 
 \begin{document}
 
 \input{common/renames}                  % Переопределение именований
 
-\include{Dissertation/title}                % титульный лист
-\include{Dissertation/contents}             % оглавление
-\include{Dissertation/abstract}             % реферат
-\include{Dissertation/list_of_symbols}      % перечень условных обозначений
-\include{Dissertation/introduction}         % введение;
-\include{Dissertation/analytical_section}   % аналитический раздел;
-\include{Dissertation/engineering_section}  % конструкторский раздел;
-\include{Dissertation/technological_section}% технологический раздел;
-\include{Dissertation/experimental_section} % экспериментальный раздел;
-\include{Dissertation/conclusion}           % заключение;
-\include{Dissertation/bibliography}         % список литературы;
-\include{Dissertation/applications}         % приложения.
+\include{Dissertation/sections/title}                % титульный лист
+\include{Dissertation/sections/contents}             % оглавление
+\include{Dissertation/sections/abstract}             % реферат
+\include{Dissertation/sections/list_of_symbols}      % перечень условных обозначений
+\include{Dissertation/sections/introduction}         % введение;
+\include{Dissertation/sections/analytical_section}   % аналитический раздел;
+\include{Dissertation/sections/engineering_section}  % конструкторский раздел;
+\include{Dissertation/sections/technological_section}% технологический раздел;
+\include{Dissertation/sections/experimental_section} % экспериментальный раздел;
+\include{Dissertation/sections/conclusion}           % заключение;
+\include{Dissertation/sections/bibliography}         % список литературы;
+\include{Dissertation/sections/applications}         % приложения.
 
 
 \end{document}
