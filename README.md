@@ -2,4 +2,5 @@
 
 ## Маркин Кирилл
 
-[РПЗ](/note/note.pdf)
+* [РПЗ](/note/note.pdf)
+* [Презентация](/presentation/presentation.pptx)
