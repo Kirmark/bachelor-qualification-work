@@ -10,3 +10,7 @@
 
 # Google disk files
 Icon*
+
+# Получение данных с конкретного новостного ресурса
+application/data_raw/*
+
