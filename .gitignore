@@ -6,6 +6,7 @@
 *.out
 *.synctex.gz
 *.toc
+*_temp.tex
 
 # Google disk files
 Icon*
