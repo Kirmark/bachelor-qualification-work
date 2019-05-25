@@ -2,10 +2,10 @@ import sqlite3
 
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 50
-FILE_NAME = 'test.txt'
+FILE_ADRESS = 'application/data_clean/test.txt'
+DB_ADRESS = 'application/data_raw/spider.sqlite'
 
-db_adress = 'application/data_raw/spider.sqlite'
-conn = sqlite3.connect(db_adress)
+conn = sqlite3.connect(DB_ADRESS)
 cur = conn.cursor()
 
 print()
@@ -20,13 +20,15 @@ cur.execute(
 data = cur.fetchall()
 
 # Опустошение файла, если он существует
-open(FILE_NAME, 'w').close()
+open(FILE_ADRESS, 'w').close()
 for i in range(len(data)):
     
     # Вставка строки в файл
     line = data[i][0] + ' ' + data[i][1]
-    with open(FILE_NAME, 'a') as f:
+    with open(FILE_ADRESS, 'a') as f:
         f.write(line + "\n")
 
-print('Запись в файл ' + FILE_NAME + ' окончена')
+print('Запись в файл ' + FILE_ADRESS + ' окончена')
+
+
 print()
