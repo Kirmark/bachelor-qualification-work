@@ -17,15 +17,14 @@ def text_to_vowpal_wabbit(s):
 
     for l in lemmas:
         l_strip = l.strip()
-        if len(l_strip) > 30:
-            # Проверка длинны слова
-            raise Exception("Длинна слова больше 30 символов")
 
         if (
             # Пропуск слишком коротких строк
-            len(l_strip)>3
+            len(l_strip) > 3
             # Проверка на наличие русских букв и цифр
             and re.match("^[А-Яа-я0-9]*$", l_strip)
+            # Проверка длинны слова
+            and len(l_strip) < 30
         ):
             # Дописывание в результат через пробел
             res = res + l_strip + ' '
