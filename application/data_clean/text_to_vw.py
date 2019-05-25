@@ -1,7 +1,7 @@
 import sqlite3
 import datetime
 
-import my_vw_lib
+import libs.my_vw_lib as vw
 
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 50
@@ -40,7 +40,7 @@ try:
 
 			if len(text) > 30:
 				# Форматирование текста
-				vw_text = my_vw_lib.text_to_vowpal_wabbit(text)
+				vw_text = vw.text_to_vowpal_wabbit(text)
 
 				# vowpal_wabbit
 				data[i][2] = vw_text
