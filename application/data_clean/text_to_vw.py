@@ -8,7 +8,6 @@ PART_LIMIT = 50
 
 try:
 	db_adress = 'application/data_raw/spider.sqlite'
-
 	conn = sqlite3.connect(db_adress)
 	cur = conn.cursor()
 
