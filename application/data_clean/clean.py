@@ -1,3 +1,4 @@
+import text_to_vowpal_wabbit
 import sqlite3
 
 db_adress = 'application/data_raw/spider.sqlite'
