@@ -1,13 +1,7 @@
 import artm
 
 FILE_ADRESS = 'application/data_clean/test.txt'
-BATCH_ADRESS = 'application/data_clean'
-
-#print(artm.version())
-
-
-
-#model = artm.ARTM()
+BATCH_ADRESS = 'application/data_clean/batches_news'
 
 batch_vectorizer = artm.BatchVectorizer(
     data_path=FILE_ADRESS, 
