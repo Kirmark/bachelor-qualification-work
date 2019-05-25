@@ -22,6 +22,7 @@ __pycache__
 
 # Файлы bigartm
 bigartm*
+*.batch
 
 # Название файла, часто используемое для тестов
 test.txt
