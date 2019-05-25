@@ -1,4 +1,4 @@
-import text_to_vowpal_wabbit
+from text_to_vowpal_wabbit import *
 import sqlite3
 
 db_adress = 'application/data_raw/spider.sqlite'
@@ -6,8 +6,17 @@ db_adress = 'application/data_raw/spider.sqlite'
 conn = sqlite3.connect(db_adress)
 cur = conn.cursor()
 
-cur.execute("SELECT url, html, title_text, body_text, date_clean FROM Pages LIMIT 3")
+cur.execute("SELECT url, body_text, vowpal_wabbit_date FROM Pages LIMIT 100")
 data = cur.fetchall()
+
+for i in range(len(data)):
+	text = data[i][1]
+	if len(text) > 30:
+		t = text_to_vowpal_wabbit(text)
+		with open('test.txt', 'a') as f:
+			f.write(t + '\n')
+
+
 
 
 
