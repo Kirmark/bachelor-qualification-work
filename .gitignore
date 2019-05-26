@@ -29,3 +29,6 @@ test.txt
 
 # Вспомогательные файлы ipython notebook
 .ipynb_checkpoints
+
+# Промежуточные текстовые файлы с почищенными данными в формате vowpal_wabbit
+application/data_clean/result_clean

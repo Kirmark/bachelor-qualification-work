@@ -2,7 +2,7 @@ import sqlite3
 
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 50
-FILE_ADRESS = 'application/data_clean/test.txt'
+FILE_ADRESS = 'application/data_clean/news_in_vowpal_wabbit.txt'
 DB_ADRESS = 'application/data_raw/spider.sqlite'
 
 conn = sqlite3.connect(DB_ADRESS)

@@ -1,6 +1,6 @@
 import artm
 
-FILE_ADRESS = 'application/data_clean/test.txt'
+FILE_ADRESS = 'application/data_clean/news_in_vowpal_wabbit.txt'
 BATCH_ADRESS = 'application/models/batches_news'
 
 batch_vectorizer = artm.BatchVectorizer(
