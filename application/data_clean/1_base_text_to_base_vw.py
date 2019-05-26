@@ -1,8 +1,12 @@
+# Берет из базы текст на русском языке, проводит леммирование, преобразование 
+# к vowpal_wabbit формату и сохраняет обратно в базу построчно
+
 import sqlite3
 import datetime
 
 import libs.my_vw_lib as vw
 
+# Адрес БД с иходными данными и для сохранения результата
 DB_ADRESS = 'application/data_raw/spider.sqlite'
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 50
@@ -82,6 +86,8 @@ try:
 
 	print()
 	print("Все записи обработаны")
+	print()
 
 except KeyboardInterrupt:	# Ctrl+C
-    pass
+	print()
+	pass
