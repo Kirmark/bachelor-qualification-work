@@ -26,3 +26,6 @@ bigartm*
 
 # Название файла, часто используемое для тестов
 test.txt
+
+# Вспомогательные файлы ipython notebook
+.ipynb_checkpoints
