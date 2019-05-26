@@ -25,4 +25,4 @@
   * [2_base_vm_to_txt_vm.py](/application/data_clean/2_base_vm_to_txt_vm.py)
 * Преобразование текстовго файла в формате vowpal_wabbit в формат bigartm - batches
   * [3_txt_vw_to_batches.py](/application/data_clean/3_txt_vw_to_batches.py)
-* [Эксперименты с bigartm](/application/models)
+* [Эксперименты с bigartm](/application/models/create_model.ipynb)
