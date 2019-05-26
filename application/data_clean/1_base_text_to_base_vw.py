@@ -3,12 +3,12 @@ import datetime
 
 import libs.my_vw_lib as vw
 
+DB_ADRESS = 'application/data_raw/spider.sqlite'
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 50
 
 try:
-	db_adress = 'application/data_raw/spider.sqlite'
-	conn = sqlite3.connect(db_adress)
+	conn = sqlite3.connect(DB_ADRESS)
 	cur = conn.cursor()
 
 	data = [0]
