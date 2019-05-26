@@ -16,16 +16,26 @@ try:
 	conn = sqlite3.connect(DB_ADRESS)
 	cur = conn.cursor()
 
+	print()
+	print("Обработка идет по", PART_LIMIT, "записей")
+	print()
+	print("Начало обработки...")
+
 	# Работа пока пользователь не нажмет Ctrl+C 
 	# или пока не закончатся необработанные даныные в базе
 	data = [0]
 	while len(data) != 0:
-		print()
-		print("Обработка идет по", PART_LIMIT, "записей")
-		print()
-		print("Начало обработки...")
-		print()
 
+		# Вывод текущей ситуации обработки данных в базе
+		print()
+		cur.execute("SELECT count() FROM Pages")
+		print('{0:30}'.format("Записей в базе:"), 
+			'{0:7}'.format(cur.fetchone()[0]))
+		cur.execute("SELECT count() FROM Pages WHERE vowpal_wabbit_date is not NULL")
+		print('{0:30}'.format("Обработано записей:"),
+			'{0:7}'.format(cur.fetchone()[0]))
+		print()
+		
 		# Получение данных из базы по PART_LIMIT штук
 		cur.execute(
 			"SELECT url, body_text, vowpal_wabbit, vowpal_wabbit_date FROM Pages "
@@ -74,15 +84,6 @@ try:
 				# слишком много данных при остановке программы
 				conn.commit()
 		conn.commit()
-		
-		# Вывод текущей ситуации обработки данных в базе
-		print()
-		cur.execute("SELECT count() FROM Pages")
-		print('{0:30}'.format("Записей в базе:"), 
-			'{0:7}'.format(cur.fetchone()[0]))
-		cur.execute("SELECT count() FROM Pages WHERE vowpal_wabbit_date is not NULL")
-		print('{0:30}'.format("Обработано записей:"),
-			'{0:7}'.format(cur.fetchone()[0]))
 
 	print()
 	print("Все записи обработаны")
