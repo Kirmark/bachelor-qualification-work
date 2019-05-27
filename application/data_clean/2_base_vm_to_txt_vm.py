@@ -4,7 +4,7 @@
 import sqlite3
 
 # Количество записей обрабатываемых за один проход
-LIMIT = -1      # -1 -> лимит выключен;
+LIMIT = 1000      # -1 -> лимит выключен;
 # Адрес БД с иходными данными
 DB_ADRESS = 'application/data_raw/spider.sqlite'
 # Адрес файла для сохарнения результата
@@ -33,6 +33,10 @@ for i in range(len(data)):
     
     # Добавление строки в файл
     line = data[i][0] + ' ' + data[i][1]
+
+    # Удаление названия модальности для эксперимента (после надо поправить)
+    line = line.replace('|text ', '')
+    
     with open(FILE_ADRESS, 'a') as f:
         f.write(line + "\n")
 
