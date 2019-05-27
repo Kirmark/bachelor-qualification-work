@@ -23,8 +23,8 @@ __pycache__
 # Файлы bigartm
 bigartm*
 *.batch
-*.dict
-application/models/batches_news
+#*.dict
+#application/models/batches_news/*
 
 # Название файла, часто используемое для тестов
 test.txt
