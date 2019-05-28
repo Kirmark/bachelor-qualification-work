@@ -1,18 +1,18 @@
 % Формат А4, 14pt (ГОСТ Р 7.0.11-2011, 5.3.6)
 \documentclass[a4paper,14pt]{extreport}
 
-\input{common/packages}                 % Пакеты общие для диссертации и автореферата
-\input{common/note_packages}            % Пакеты для диссертации
-\input{common/data}                     % Основные сведения
-\input{common/newnames}                 % Новые переменные, которые могут использоваться во всём проекте
-\input{common/note_styles}              % Стили для диссертации
+\input{common/packages}                     % Пакеты общие для диссертации и автореферата
+\input{common/note_packages}                % Пакеты для диссертации
+\input{common/data}                         % Основные сведения
+\input{common/newnames}                     % Новые переменные, которые могут использоваться во всём проекте
+\input{common/note_styles}                  % Стили для диссертации
 
 
 \begin{document}
 
-\input{common/renames}                  % Переопределение именований
+\input{common/renames}                      % Переопределение именований
 
-\include{sections/title}                % титульный лист
+\include{sections/title}                    % титульный лист
 
 \chapter{Техническое задание}
 \todo[inline]{Заменить эту страницу на подписанное ТЗ}
@@ -20,16 +20,16 @@
 \chapter{Календарный план}
 \todo[inline]{Заменить эту страницу на подписанный календарный план}
 
-\include{sections/contents}             % оглавление
-\include{sections/abstract}             % реферат
-\include{sections/list_of_symbols}      % перечень условных обозначений
-\include{sections/introduction}         % введение;
-\include{sections/analytical_section}   % аналитический раздел;
-\include{sections/engineering_section}  % конструкторский раздел;
-\include{sections/technological_section}% технологический раздел;
-\include{sections/experimental_section} % экспериментальный раздел;
-\include{sections/conclusion}           % заключение;
-\include{sections/bibliography}         % список литературы;
-\include{sections/applications}         % приложения.
+\include{sections/abstract}                 % реферат
+\include{sections/list_of_symbols}          % перечень условных обозначений
+\include{sections/contents}                 % оглавление
+\include{sections/introduction}             % введение;
+\include{sections/analytical_section}       % аналитический раздел;
+\include{sections/engineering_section}      % конструкторский раздел;
+\include{sections/technological_section}    % технологический раздел;
+\include{sections/experimental_section}     % экспериментальный раздел;
+\include{sections/conclusion}               % заключение;
+\include{sections/bibliography}             % список литературы;
+\include{sections/applications}             % приложения.
 
 \end{document}
