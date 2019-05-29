@@ -17,7 +17,6 @@
 \newcounter{tabtita}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 %%% Изображения %%%
 \graphicspath{{images/}{Dissertation/images/}}         % Пути к изображениям
 
@@ -33,6 +32,7 @@
     \newcommand{\hdngalign}{\filright}                 % по левому краю
     \newcommand{\hdngaligni}{\hspace{\otstuplen}}      % по левому краю
 } % В обоих случаях вроде бы без переноса, как и надо (ГОСТ Р 7.0.11-2011, 5.3.5)
+
 
 %%% Оглавление %%%
 \renewcommand{\cftchapdotsep}{\cftdotsep}                % отбивка точками до номера страницы начала главы/раздела
@@ -134,9 +134,9 @@
 
 % Счётчик intvl и длина \otstup определены в файле setup
 \titlespacing{\chapter}{\theotstup\parindent}{-1.7em}{*\theintvl}       % Заголовки отделяют от текста сверху и снизу тремя интервалами (ГОСТ Р 7.0.11-2011, 5.3.5). Поскольку название главы всегда является первым на странице, то перед ним отделять пустым тройным интервалом не следует. Независимо от основного шрифта, в этом случае зануление происходит при -1.7em.
-\titlespacing{\section}{\theotstup\parindent}{*\theintvl}{*\theintvl}
-\titlespacing{\subsection}{\theotstup\parindent}{*\theintvl}{*\theintvl}
-\titlespacing{\subsubsection}{\theotstup\parindent}{*\theintvl}{*\theintvl}
+\titlespacing{\section}{\theotstup\parindent}{20pt}{*\theintvl}
+\titlespacing{\subsection}{\theotstup\parindent}{20pt}{*\theintvl}
+\titlespacing{\subsubsection}{\theotstup\parindent}{20pt}{*\theintvl}
 
 %%% Блок дополнительного управления размерами заголовков
 \ifthenelse{\equal{\theheadingsize}{1}}{% Пропорциональные заголовки и базовый шрифт 14 пт
