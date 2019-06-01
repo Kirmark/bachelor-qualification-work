@@ -1,6 +1,6 @@
 import artm
 
-BATCH_ADRESS = 'application/data_clean/batches_news'
+BATCH_ADRESS = 'application/models/batches_news'
 
 batch_vectorizer = artm.BatchVectorizer(
     data_path=BATCH_ADRESS, data_format='batches')
