@@ -33,3 +33,6 @@ test.txt
 
 # Промежуточные текстовые файлы с почищенными данными в формате vowpal_wabbit
 application/data_clean/result_clean
+
+# Примеры кода
+application/models/examples/*
