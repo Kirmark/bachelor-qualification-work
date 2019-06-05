@@ -22,7 +22,7 @@ def text_to_vowpal_wabbit(s):
             # Пропуск слишком коротких строк
             len(l_strip) > 3
             # Проверка на наличие русских букв и цифр
-            and re.match("^[А-Яа-я0-9]*$", l_strip)
+            and re.match("^[А-Яа-я]*$", l_strip)
             # Проверка длинны слова
             and len(l_strip) < 30
         ):
