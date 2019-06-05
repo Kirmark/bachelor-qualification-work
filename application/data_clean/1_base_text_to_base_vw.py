@@ -30,14 +30,14 @@ try:
 	while len(data) != 0:
 
 		# Вывод текущей ситуации обработки данных в базе
-		#print()
-		#cur.execute("SELECT count() FROM Pages")
-		#print('{0:30}'.format("Записей в базе:"), 
-		#	'{0:7}'.format(cur.fetchone()[0]))
-		#cur.execute("SELECT count() FROM Pages WHERE vowpal_wabbit_date is not NULL")
-		#print('{0:30}'.format("Обработано записей:"),
-		#	'{0:7}'.format(cur.fetchone()[0]))
-		#print()
+		print()
+		cur.execute("SELECT count() FROM Pages")
+		print('{0:30}'.format("Записей в базе:"), 
+			'{0:7}'.format(cur.fetchone()[0]))
+		cur.execute("SELECT count() FROM Pages WHERE vowpal_wabbit_date is not NULL")
+		print('{0:30}'.format("Обработано записей:"),
+			'{0:7}'.format(cur.fetchone()[0]))
+		print()
 		
 		# Получение данных из базы по PART_LIMIT штук
 		cur.execute(
@@ -87,7 +87,7 @@ try:
 				data[i][3],		# Столбец: vowpal_wabbit_date
 				data[i][0],		# Столбец: url
 			))
-			if i % 100 == 0:
+			if i % 50 == 0:
     			# Периодический коммит, что бы не потерять 
 				# слишком много данных при остановке программы
 				conn.commit()
