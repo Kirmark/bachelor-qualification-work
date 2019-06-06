@@ -51,7 +51,7 @@ def clean_one_part(i):
 			# Получение данных из базы по PART_LIMIT штук
 			cur.execute(
 				"SELECT url, "+MODE+", vowpal_wabbit, vowpal_wabbit_date, title_text FROM Pages "
-				+ "WHERE vowpal_wabbit_date is NULL and "+MODE+" is not NULL "
+				+ "WHERE vowpal_wabbit_date is NULL " + "and "+MODE+" is not NULL "
 				# Сделано так, что бы быстрее работал RANDOM()
 				+ "and id IN (SELECT id FROM Pages ORDER BY RANDOM() "
 				+ "LIMIT "
@@ -118,9 +118,9 @@ def clean_one_part(i):
 				# Запись результатов в столбец vowpal_wabbit
 				data[i][2] = vw_text
 
-				# Запись даты и времени обработки в столбец vowpal_wabbit_date
-				data[i][3] = int((datetime.datetime.utcnow() -
-									datetime.datetime(1970, 1, 1)).total_seconds())
+			# Запись даты и времени обработки в столбец vowpal_wabbit_date
+			data[i][3] = int((datetime.datetime.utcnow() -
+								datetime.datetime(1970, 1, 1)).total_seconds())
 			# Периодический вывод id, что бы пользователь понимал, что все ОК
 			#if i % 100 == 0:
 			#	print("Процесс_{0:0>3}: ".format(num) + "подготовлена запись номер", i)
