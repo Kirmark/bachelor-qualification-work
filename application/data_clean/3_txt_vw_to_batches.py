@@ -4,9 +4,9 @@
 import artm
 
 # Адрес файла с исходными данными
-FILE_ADRESS = 'application/data_clean/result_clean/news_in_vowpal_wabbit.txt'
+FILE_ADRESS = 'application/data_clean/result_clean/news_in_vowpal_wabbit_ria.txt'
 # Адрес папки для сохранения результата
-BATCH_ADRESS = 'application/models/batches_news'
+BATCH_ADRESS = 'application/models/batches_news_ria'
 
 # Преобразование в формат для bigartm
 batch_vectorizer = artm.BatchVectorizer(

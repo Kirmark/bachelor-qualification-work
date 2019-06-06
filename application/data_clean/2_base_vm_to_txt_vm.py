@@ -8,7 +8,7 @@ LIMIT = -1      # -1 -> лимит выключен;
 # Адрес БД с иходными данными
 DB_ADRESS = 'application/data_raw/spider.sqlite'
 # Адрес файла для сохарнения результата
-FILE_ADRESS = 'application/data_clean/result_clean/news_in_vowpal_wabbit.txt'
+FILE_ADRESS = 'application/data_clean/result_clean/news_in_vowpal_wabbit_ria.txt'
 
 conn = sqlite3.connect(DB_ADRESS)
 cur = conn.cursor()
@@ -17,7 +17,7 @@ print()
 
 query_str = (
     "SELECT url, vowpal_wabbit FROM Pages " 
-    + "WHERE vowpal_wabbit_date is not NULL and vowpal_wabbit is not NULL"
+    + "WHERE vowpal_wabbit_date is not NULL and source is \'ria\'"
 )
 # Добавление ограничение запроса, если LIMIT > 0
 if LIMIT > 0:
@@ -34,7 +34,7 @@ for i in range(len(data)):
     # Добавление строки в файл
     line = data[i][0] + ' ' + data[i][1]
 
-    # Удаление названия модальности для эксперимента (после надо поправить)
+    # TODO Удаление названия модальности для эксперимента
     line = line.replace('|text ', '')
     
     with open(FILE_ADRESS, 'a') as f:
