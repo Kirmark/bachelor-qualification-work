@@ -102,7 +102,6 @@ try:
 	print()
 	print("Начало обработки...")
 	
-	lock = mp.Lock()
 	for num in range(WORKER_NUM):
 		mp.Process(target=clean_one_part, args=(
 			num,
