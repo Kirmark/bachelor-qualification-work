@@ -10,7 +10,7 @@ import random as rnd
 # Библиотека для леммирования
 from pymystem3 import Mystem
 
-WORKER_NUM = 4
+WORKER_NUM = 8
 
 #MODE = 'body_text'
 MODE = 'html'
@@ -20,6 +20,9 @@ MODE = 'html'
 DB_ADRESS = 'spider.sqlite'
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 400
+
+def my_rnd():
+	return rnd.uniform(60.0, 120.0)
 
 def clean_one_part(i):
 	
@@ -59,7 +62,10 @@ def clean_one_part(i):
 		except:
 			print("Процесс_{0:0>3}: ".format(num) + "при чтении база была заблокирована, работа продолжена")
 			data = [0]
-			time.sleep(rnd.uniform(10.0, 20.0))
+			time.sleep(my_rnd())
+			# Соединение с БД
+			conn = sqlite3.connect(DB_ADRESS)
+			cur = conn.cursor()
 			continue
 
 		# Построчная обработка полученных данных
@@ -135,7 +141,10 @@ def clean_one_part(i):
 		except:
 			print("Процесс_{0:0>3}: ".format(num) + "при вставке база была заблокирована, работа продолжена")
 			data = [0]
-			time.sleep(rnd.uniform(10.0, 20.0))
+			time.sleep(my_rnd())
+			# Соединение с БД
+			conn = sqlite3.connect(DB_ADRESS)
+			cur = conn.cursor()
 			continue
 
 	print("Процесс{0:0>3}: ".format(num) + "Все записи обработаны")
