@@ -10,14 +10,14 @@ import random as rnd
 # Библиотека для леммирования
 from pymystem3 import Mystem
 
-WORKER_NUM = 8
+WORKER_NUM = 2
 
 #MODE = 'body_text'
 MODE = 'html'
 
 # Адрес БД с иходными данными и для сохранения результата
-#DB_ADRESS = 'application/data_raw/spider.sqlite'
-DB_ADRESS = 'spider.sqlite'
+DB_ADRESS = 'application/data_raw/spider.sqlite'
+#DB_ADRESS = 'spider.sqlite'
 # Количество записей обрабатываемых за один проход
 PART_LIMIT = 400
 
