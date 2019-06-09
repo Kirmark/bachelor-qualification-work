@@ -7,18 +7,21 @@
 \input{common/newnames}                     % Новые переменные, которые могут использоваться во всём проекте
 \input{common/note_styles}                  % Стили для диссертации
 
+
+\usepackage{listings}
+
 \begin{document}
 
 \input{common/renames}                      % Переопределение именований
 
 \include{sections/title}                    % титульный лист
 
-\todo[inline]{Заменить эту страницу на подписанное ТЗ} \newpage
-
+\todo[inline]{Заменить эту страницу на подписанное ТЗ 1стр} \newpage
+\todo[inline]{Заменить эту страницу на подписанное ТЗ 2стр} \newpage
 \todo[inline]{Заменить эту страницу на подписанный календарный план} \newpage
 
 \include{sections/abstract}                 % реферат
-\include{sections/list_of_symbols}          % перечень условных обозначений
+% \include{sections/list_of_symbols}          % перечень условных обозначений
 \include{sections/contents}                 % оглавление
 \include{sections/introduction}             % введение;
 \include{sections/analytical_section}       % аналитический̆ раздел;
@@ -27,6 +30,5 @@
 \include{sections/experimental_section}     % экспериментальный̆ раздел;
 \include{sections/conclusion}               % заключение;
 \include{sections/bibliography}             % список литературы;
-\include{sections/applications}             % приложения.
 
 \end{document}
