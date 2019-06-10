@@ -31,4 +31,11 @@ Dumais S.~T.~Furnas G.~W.~Landauer T.~K., S.~Deerwester. Using latent semantic
   New York: ACM, 1988.
 \newblock 281~{с.}
 
+\bibitem{EMonline}
+\selectlanguageifdefined{russian}
+Frei~O.~Apishev~M. Parallel non-bloking deterministi algorithm for online topi
+  modeling.
+\newblock Analysis of Images, Soial networks and Texts., 2016.
+\newblock 132~{с.}
+
 \end{thebibliography}
