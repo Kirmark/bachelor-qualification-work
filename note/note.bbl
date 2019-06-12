@@ -67,9 +67,9 @@ Jordan~D. Blei A. Ng~M. Latent Dirichlet allocation.
 
 \bibitem{EMonline}
 \selectlanguageifdefined{russian}
-Frei~O.~Apishev~M. Parallel non-bloking deterministi algorithm for online topi
-  modeling.
-\newblock Analysis of Images, Soial networks and Texts., 2016.
+Frei~O.~Apishev~M. Parallel non-bloсking deterministiс algorithm for online
+  topiс modeling.
+\newblock Analysis of Images, Soсial networks and Texts., 2016.
 \newblock 132~{с.}
 
 \bibitem{VowpalWabbit}
