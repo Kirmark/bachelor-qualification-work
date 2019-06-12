@@ -9,6 +9,34 @@
 
 
 \usepackage{listings}
+
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+    language=Python,                % Язык программирования 
+    numbers=left,                   % С какой стороны нумеровать
+    %numberstyle=tinycolor{gray},     % Стиль который будет использоваться для нумерации строк
+    stepnumber=2,                   % Шаг между линиями. Если 1, то будет пронумерована каждая строка 
+    %numbersep=5pt,                  
+    %backgroundcolor=color{white},      % Цвет подложки. Вы должны добавить пакет color - usepackage{color}
+    %showspaces=false,               
+    %showstringspaces=false,         
+    %showtabs=false,                
+    %frame=single,                    % Добавить рамку
+    %rulecolor=color{black},        
+    %tabsize=2,                       % Tab - 2 пробела
+    breaklines=true,                 % Автоматический перенос строк
+    breakatwhitespace=true,          % Переносить строки по словам
+    %title=lstname,                   % Показать название подгружаемого файла
+    %keywordstyle=color{blue},          % Стиль ключевых слов
+    %commentstyle=color{dkgreen},       % Стиль комментариев
+    %stringstyle=color{mauve}          % Стиль литералов
+}
+
 \usepackage{graphicx}
 \graphicspath{{pictures/}}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
@@ -19,9 +47,9 @@
 
 \include{sections/title}                    % титульный лист
 
-\todo[inline]{Заменить эту страницу на подписанное ТЗ 1стр} \newpage
-\todo[inline]{Заменить эту страницу на подписанное ТЗ 2стр} \newpage
-\todo[inline]{Заменить эту страницу на подписанный календарный план} \newpage
+%\todo[inline]{Заменить эту страницу на подписанное ТЗ 1стр} \newpage
+%\todo[inline]{Заменить эту страницу на подписанное ТЗ 2стр} \newpage
+%\todo[inline]{Заменить эту страницу на подписанный календарный план} \newpage
 
 \include{sections/abstract}                 % реферат
 % \include{sections/list_of_symbols}          % перечень условных обозначений
@@ -32,6 +60,143 @@
 \include{sections/technological_section}    % технологический̆ раздел;
 \include{sections/experimental_section}     % экспериментальный̆ раздел;
 \include{sections/conclusion}               % заключение;
+
+\chapter*{ПРИЛОЖЕНИЕ А}
+
+\section*{ИСХОДНЫЙ КОД СЕРВИСА ОЧИСТКИ}
+
+\begin{lstlisting}
+import sqlite3
+import datetime
+import multiprocessing as mp
+import re
+import time
+import random as rnd
+
+from pymystem3 import Mystem
+
+WORKER_NUM = 2
+
+#MODE = 'body_text'
+MODE = 'html'
+
+DB_ADRESS = 'application/data_raw/spider.sqlite'
+#DB_ADRESS = 'spider.sqlite'
+PART_LIMIT = 400
+
+def my_rnd():
+    return rnd.uniform(60.0, 120.0)
+
+def clean_one_part(i):
+    
+    mystem = Mystem()
+    
+    conn = sqlite3.connect(DB_ADRESS)
+    cur = conn.cursor()
+
+    data = [0]
+    while len(data) != 0:
+        try:
+            cur.execute("SELECT count() FROM Pages")
+            print("process_{0:0>3}: ".format(num) + '{0:30}'.format("rec:"),
+                        '{0:7}'.format(cur.fetchone()[0]))
+            cur.execute("SELECT count() FROM Pages WHERE vowpal_wabbit_date is not NULL")
+            print("process_{0:0>3}: ".format(num) + '{0:30}'.format("rec:"),
+                        '{0:7}'.format(cur.fetchone()[0]))
+            #print()
+
+            cur.execute(
+                "SELECT url, "+MODE+", vowpal_wabbit, vowpal_wabbit_date, title_text FROM Pages "
+                + "WHERE vowpal_wabbit_date is NULL " + "and "+MODE+" is not NULL "
+                + "and id IN (SELECT id FROM Pages ORDER BY RANDOM() "
+                + "LIMIT "
+                + str(PART_LIMIT)
+                + ")"
+            )
+            data = cur.fetchall()
+        except:
+            data = [0]
+            time.sleep(my_rnd())
+            conn = sqlite3.connect(DB_ADRESS)
+            cur = conn.cursor()
+            continue
+
+        for i in range(len(data)):
+
+            data[i] = list(data[i])
+
+            if MODE == 'html':
+                mode_text = data[i][1].decode()
+            else:
+                mode_text = data[i][1]
+
+            # body_text/html + title_text
+            text = mode_text + ' ' + data[i][4]
+
+            if len(text) > 30:
+
+                
+                s = text
+
+                if len(s) < 30:
+                    raise Exception()
+                res = ''
+
+                res = '|text '
+
+                lemmas = mystem.lemmatize(s)
+
+                for l in lemmas:
+                    l_strip = l.strip()
+
+                    if (
+                        len(l_strip) > 3
+                        and re.match("^[A-za-z]*$", l_strip)
+                        and len(l_strip) < 30
+                    ):
+                        res = res + l_strip + ' '
+
+                vw_text = res
+
+                data[i][2] = vw_text
+
+            data[i][3] = int((datetime.datetime.utcnow() -
+                                datetime.datetime(1970, 1, 1)).total_seconds())
+
+        try:
+            for i in range(len(data)):
+                cur.execute("UPDATE Pages SET vowpal_wabbit=?, vowpal_wabbit_date=? WHERE url=?", (
+                    data[i][2],		
+                    data[i][3],		
+                    data[i][0],		
+                ))
+            conn.commit()
+        except:
+            data = [0]
+            time.sleep(my_rnd())
+            conn = sqlite3.connect(DB_ADRESS)
+            cur = conn.cursor()
+            continue
+
+try:
+
+    print()
+    print()
+    print()
+    print()
+    
+    for num in range(WORKER_NUM):
+        mp.Process(target=clean_one_part, args=(
+            num,
+        )).start()
+        time.sleep(rnd.uniform(1.0, 2.0))
+
+except KeyboardInterrupt:	# Ctrl+C
+    print()
+    pass
+    
+\end{lstlisting}
+
 \include{sections/bibliography}             % список литературы;
 
 \end{document}
