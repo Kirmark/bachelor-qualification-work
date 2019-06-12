@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\language\csname l@#1\endcsname\fi}
@@ -6,6 +6,22 @@
 \ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
 \ifx\undefined\BibAnnote\long\def\BibAnnote#1{(#1)}\else\fi
 \ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
+
+\bibitem{JamesAllan}
+\selectlanguageifdefined{russian}
+Yang~James Allan Jaime Carbonell George Doddington Jonathan Yamron~Yiming.
+  Topic Detecion and Tracking Pilot Study. Final Report.
+\newblock Proceedings of the Broadcast News Transcription and Understanding
+  Workshop, 1998.
+\newblock 167~{с.}
+
+\bibitem{Allan}
+\selectlanguageifdefined{russian}
+R.~Allan J. Lavrenko F. Malin D.~Swan. Detections, bounds and timelines: UMass
+  and TDT-3.
+\newblock In Proceedings of Topic Detecion and Tracking Workshop, pages
+  167-174, 2000.
+\newblock 177~{с.}
 
 \bibitem{Klyshinskiy1}
 \selectlanguageifdefined{russian}
@@ -31,11 +47,37 @@ Dumais S.~T.~Furnas G.~W.~Landauer T.~K., S.~Deerwester. Using latent semantic
   New York: ACM, 1988.
 \newblock 281~{с.}
 
+\bibitem{Hofmann}
+\selectlanguageifdefined{russian}
+Hofmann~Thomas. Probabilistic Latent Semantic Analysis.
+\newblock UAI, 1999.
+\newblock 195~{с.}
+
+\bibitem{Hofmann1}
+\selectlanguageifdefined{russian}
+Hofmann~Thomas. Probabilistic Latent Semantic Indexing.
+\newblock SIGIR, 1999.
+\newblock 196~{с.}
+
+\bibitem{Blei}
+\selectlanguageifdefined{russian}
+Jordan~D. Blei A. Ng~M. Latent Dirichlet allocation.
+\newblock Journal of Machine Learning Research, 2003.
+\newblock 187~{с.}
+
 \bibitem{EMonline}
 \selectlanguageifdefined{russian}
 Frei~O.~Apishev~M. Parallel non-bloking deterministi algorithm for online topi
   modeling.
 \newblock Analysis of Images, Soial networks and Texts., 2016.
 \newblock 132~{с.}
+
+\bibitem{VowpalWabbit}
+\selectlanguageifdefined{russian}
+VowpalWabbit. Vowpal Wabbit is a machine learning system
+  [Электронный ресурс].
+\newblock URL: \url{https://github.com/VowpalWabbit/vowpal_wabbit}.
+\newblock 2018.
+\newblock [дата обращения: 12.06.2019].
 
 \end{thebibliography}
